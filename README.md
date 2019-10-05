@@ -18,4 +18,5 @@ o	Make sure each player takes a snapshot of their final score to archive their s
 •	The game will track the time it takes for each player to submit the correct Last Name of the MLB player and display it on the scoreboard.  1 point will be given for correct answers and 0 points for incorrect answers.  The point earned for each round will be displayed on the scoreboard as well
 •	In addition, summary game stats such as Average Time per Guess, Guess Correct %, and Total Points Scored will be displayed on the game screen
 
-![alt text](image.jpg)
+![TCT-wireframes](https://i.imgur.com/yCMj1XX.jpg)
+
