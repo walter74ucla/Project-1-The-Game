@@ -7,39 +7,47 @@
 	grid-gap: 1em; /*this give equal spacing between column and row*/
 }
 
+.start {
+	border: 2px solid purple;
+	grid-column: 1/4;
+	grid-row: 1;
+}
+
 .title {
 	border: 2px solid orange;
 	grid-column: 1/4;
-	grid-row: 1;
+	grid-row: 2;
 }
 
 .clues {
 	border: 2px solid black;
 	grid-column: 1;
-	grid-row: 2/4;
+	grid-row: 3/5;
 }
 
 .images {
 	border: 2px solid green;
-
+	grid-column: 2;
+	grid-row: 3;
 }
 
 .scoreboard {
 	border: 2px solid blue;
-
+	grid-column: 3;
+	grid-row: 3;	
 }
 
 .stats {
 	border: 2px solid gold;
 	grid-column: 3;
-	grid-row: 3;
+	grid-row: 4;
 
 }
 
 .lastName {
 	border: 2px solid red;
 	grid-column: 2;
-	grid-row: 3;
+	grid-row: 4;
 }
 
 
