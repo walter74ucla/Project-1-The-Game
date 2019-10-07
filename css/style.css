@@ -1,0 +1,45 @@
+
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	/*grid-column-gap: 1em;
+	grid-row-gap: 1em;*/
+	grid-gap: 1em; /*this give equal spacing between column and row*/
+}
+
+.title {
+	border: 2px solid orange;
+	grid-column: 1/4;
+	grid-row: 1;
+}
+
+.clues {
+	border: 2px solid black;
+	grid-column: 1;
+	grid-row: 2/4;
+}
+
+.images {
+	border: 2px solid green;
+
+}
+
+.scoreboard {
+	border: 2px solid blue;
+
+}
+
+.stats {
+	border: 2px solid gold;
+	grid-column: 3;
+	grid-row: 3;
+
+}
+
+.lastName {
+	border: 2px solid red;
+	grid-column: 2;
+	grid-row: 3;
+}
+
+

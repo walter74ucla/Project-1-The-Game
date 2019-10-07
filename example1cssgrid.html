@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Example 1-css grid</title>
+	<style type="text/css">
+		
+		.wrapper {
+			display: grid;
+			grid-template-columns: 70% 30%;
+			/*grid-column-gap: 1em;
+			grid-row-gap: 1em;*/
+			grid-gap: 1em; /*this give equal spacing between column and row*/
+		}
+
+		.wrapper > div{
+			background: #eee;
+			padding: 1em;
+		}
+
+		.wrapper > div:nth-child(odd){
+			background: #ddd;
+		}
+
+
+
+</style>
+</head>
+<body>
+	<div class="wrapper"> <!-- sets up grid container -->
+		<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In his igitur partibus duabus nihil erat, quod Zeno commutare gestiret. Duo Reges: constructio interrete. Haec para/doca illi, nos admirabilia dicamus. Idque testamento cavebit is, qui nobis quasi oraculum ediderit nihil post mortem ad nos pertinere? </div>
+		<div>Egone non intellego, quid sit don Graece, Latine voluptas? Cuius ad naturam apta ratio vera illa et summa lex a philosophis dicitur. Quid interest, nisi quod ego res notas notis verbis appello, illi nomina nova quaerunt, quibus idem dicant? Quae similitudo in genere etiam humano apparet. Magni enim aestimabat pecuniam non modo non contra leges, sed etiam legibus partam. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Beatus autem esse in maximarum rerum timore nemo potest. Nobis aliter videtur, recte secusne, postea; </div>
+		<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In his igitur partibus duabus nihil erat, quod Zeno commutare gestiret. Duo Reges: constructio interrete. Haec para/doca illi, nos admirabilia dicamus. Idque testamento cavebit is, qui nobis quasi oraculum ediderit nihil post mortem ad nos pertinere? </div>
+		<div>Egone non intellego, quid sit don Graece, Latine voluptas? Cuius ad naturam apta ratio vera illa et summa lex a philosophis dicitur. Quid interest, nisi quod ego res notas notis verbis appello, illi nomina nova quaerunt, quibus idem dicant? Quae similitudo in genere etiam humano apparet. Magni enim aestimabat pecuniam non modo non contra leges, sed etiam legibus partam. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Beatus autem esse in maximarum rerum timore nemo potest. Nobis aliter videtur, recte secusne, postea; </div>
+
+
+	</div>
+
+
+
+
+
+
+	
+</body>
+</html>
