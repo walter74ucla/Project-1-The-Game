@@ -5,6 +5,7 @@
 	/*grid-column-gap: 1em;
 	grid-row-gap: 1em;*/
 	grid-gap: 1em; /*this give equal spacing between column and row*/
+	
 }
 
 .start {
@@ -29,6 +30,7 @@
 	border: 2px solid green;
 	grid-column: 2;
 	grid-row: 3;
+	display: flex;
 }
 
 .scoreboard {
@@ -49,5 +51,14 @@
 	grid-column: 2;
 	grid-row: 4;
 }
+
+#gamePic {
+	
+	margin: auto;
+	border: 2px solid pink;
+
+}
+
+
 
 
