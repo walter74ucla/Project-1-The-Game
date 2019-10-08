@@ -4,7 +4,12 @@
 // $('.images').html('<img id="gamePic" src="https://i.imgur.com/COUC6oe.png" />');
 
 // .attr()-Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.
-// To change multiple attributes at the same time, pass both sets of names and values into the method at once using a plain JavaScript object. Each key-value pair in the object adds or modifies an attribute
+// To change multiple attributes at the same time, pass both sets of names and values into the method at once using a plain JavaScript object. Each key-value pair in the object adds or modifies an attribute.  
+// An example...
+// $( "#greatphoto" ).attr({
+//   alt: "Beijing Brush Seller",
+//   title: "photo by Kelly Clark"
+// });
 // $('.images').attr('src','https://i.imgur.com/COUC6oe.png');
 
 // setting the game picture dimensions
@@ -21,5 +26,19 @@ $showImage.on('click', () => {
 	// console.log('button worked');
 	newImage();
 });
+
+
+const newCover = () => {
+	$('#clue1').css('opacity', 1);
+	$('#clue2').css('opacity', 1);
+	$('#clue3').css('opacity', 1);	
+}
+
+const $showCover = $('#showCover');
+$showCover.on('click', () => {
+	// console.log('button worked');
+	newCover();
+});
+
 
 

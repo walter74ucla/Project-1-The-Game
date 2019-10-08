@@ -61,15 +61,17 @@
 
 #clue1 {
 	background: red;
-	/*opacity: 0;*/
+	opacity: 0;
 }
 
 #clue2 {
 	background: white;
+	opacity: 0;
 }
 
 #clue3 {
 	background: blue;
+	opacity: 0;
 }
 
 .scoreboard {
