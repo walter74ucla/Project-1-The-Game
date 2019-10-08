@@ -11,3 +11,15 @@
 $('#gamePic').width(200);
 $('#gamePic').height(300);
 
+const newImage = () => {
+	$('#gameImage').attr('src','https://i.imgur.com/COUC6oe.png');	
+}
+// newImage();
+
+const $showImage = $('#showImage');
+$showImage.on('click', () => {
+	// console.log('button worked');
+	newImage();
+});
+
+
