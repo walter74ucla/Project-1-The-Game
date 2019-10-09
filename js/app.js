@@ -16,76 +16,80 @@
 $('#gamePic').width(200);
 $('#gamePic').height(300);
 
-let avgLeaders = [
-	{
-		firstName: 'Ty',
-		lastName: 'Cobb',
-		avg: 0.366,
-		clue1: '12 Batting Titles',
-		clue2: '1 Triple Crown and 1 MVP win',
-		clue3: 'Nicknamed the Georgia Peach',
-		image: src="https://i.imgur.com/COUC6oe.png"
-	 }, {
-	 	firstName: 'Rogers',
-	 	lastName: 'Hornsby',
-	 	avg: 0.358,
-	 	clue1: '7 Batting Titles',
-	 	clue2: '2 Triple Crown and 7 MVP wins',
-	 	clue3: 'Nicknamed Rajah',
-	 	image: src="https://i.imgur.com/99dWUcv.jpg"
-	 }, {
-	 	firstName: 'Shoeless Joe',
-	 	lastName: 'Jackson',
-	 	avg: 0.356,
-	 	clue1: '13 year career',
-	 	clue2: 'Played for PHA, CLE, and CWS',
-	 	clue3: '3 time AL Triples leader',
-	 	image: src="https://i.imgur.com/pDcYqA4.jpg"
-	 }, {
-	 	firstName: 'Lefty',
-	 	lastName: "O'Doul",
-	 	avg: 0.349,
-	 	clue1: '2 Batting Titles',
-	 	clue2: '11 year career',
-	 	clue3: 'Born on March 4, 1897',
-	 	image: src="https://i.imgur.com/QPYhL0t.jpg"
-	 }, {
-	 	firstName: 'Ed',
-	 	lastName: "Delahanty",
-	 	avg: 0.346,
-	 	clue1: '2 Batting Titles',
-	 	clue2: '16 year career',
-	 	clue3: 'Played for PHI, WSH, and CLE',
-	 	image: src="https://i.imgur.com/XYmo9jm.jpg"
-	 }
-]
+let numAvgPics = 5;//I should not need this anymore
+//create a blank array within the game object to populate with images
+// this will give me access to the temporary arrays
 
-let numAvgPics = 5;
+let showImageClickCount = 0;
+
 const game = {
-	displayAvgPics(){
-		let orderArray = [];
-		for(let i=0; i<numAvgPics; i++){
-			let orderNum = i;
-			orderArray.push(orderNum);	
+	avgLeaders: [
+		{
+			firstName: 'Ty',
+			lastName: 'Cobb',
+			avg: 0.366,
+			clue1: '12 Batting Titles',
+			clue2: '1 Triple Crown and 1 MVP win',
+			clue3: 'Nicknamed the Georgia Peach',
+			image: "https://i.imgur.com/COUC6oe.png"
+		 }, {
+		 	firstName: 'Rogers',
+		 	lastName: 'Hornsby',
+		 	avg: 0.358,
+		 	clue1: '7 Batting Titles',
+		 	clue2: '2 Triple Crown and 7 MVP wins',
+		 	clue3: 'Nicknamed Rajah',
+		 	image: "https://i.imgur.com/99dWUcv.jpg"
+		 }, {
+		 	firstName: 'Shoeless Joe',
+		 	lastName: 'Jackson',
+		 	avg: 0.356,
+		 	clue1: '13 year career',
+		 	clue2: 'Played for PHA, CLE, and CWS',
+		 	clue3: '3 time AL Triples leader',
+		 	image: "https://i.imgur.com/pDcYqA4.jpg"
+		 }, {
+		 	firstName: 'Lefty',
+		 	lastName: "O'Doul",
+		 	avg: 0.349,
+		 	clue1: '2 Batting Titles',
+		 	clue2: '11 year career',
+		 	clue3: 'Born on March 4, 1897',
+		 	image: "https://i.imgur.com/QPYhL0t.jpg"
+		 }, {
+		 	firstName: 'Ed',
+		 	lastName: "Delahanty",
+		 	avg: 0.346,
+		 	clue1: '2 Batting Titles',
+		 	clue2: '16 year career',
+		 	clue3: 'Played for PHI, WSH, and CLE',
+		 	image: "https://i.imgur.com/XYmo9jm.jpg"
+		 }
+	],
+	avgLeadersImages: [],
+	createALIArray(){//create an array of images from the starting point data
+		let array = [];
+		for(let i=0; i<this.avgLeaders.length; i++){
+			let index = i;
+			array.push(this.avgLeaders[index].image);
 		}
-			console.log(orderArray);
-			let spliceArray = []; //use this to hold the splice			
-			let randomIndexArray = [];
-			let j = 0;
-			while(j < orderArray.length){
-				let index = Math.floor(Math.random() * orderArray.length);				
-				spliceArray = orderArray.splice(index, 1);
-				// console.log(spliceArray);
-				randomIndexArray.push(spliceArray[0]);	
-			}
-				console.log(randomIndexArray);
+		this.avgLeadersImages = array;
+	},	
+	pickImage(){//pick random image and remove it from the images array
+
 	}
+
+	// pickRandomImage(){
+	// 	let index = Math.floor(Math.random() * game.avgLeaders.length);
+	// }	
 }
-game.displayAvgPics();
+game.createALIArray();
 
 
 const newImage = () => {
+
 	$('#gameImage').attr('src','https://i.imgur.com/COUC6oe.png');	
+	showImageClickCount++;
 }
 // newImage();
 
@@ -93,6 +97,7 @@ const $showImage = $('#showImage');
 $showImage.on('click', () => {
 	// console.log('button worked');
 	newImage();
+	
 });
 
 
@@ -137,3 +142,36 @@ $clue3.on('click', () => {
 
 
 
+//Overthinking way to get an random array of any length...Solve this by declaring a "global" variable within the object
+// let numAvgPics = 5;
+// displayAvgPics(){
+// 		let orderArray = [];
+// 		for(let i=0; i<numAvgPics; i++){
+// 			let orderNum = i;
+// 			orderArray.push(orderNum);	
+// 		}
+// 			console.log(orderArray);
+// 			let spliceArray = []; //use this to hold the splice			
+// 			let randomIndexArray = [];
+// 			let j = 0;
+// 			while(j < orderArray.length){
+// 				let index = Math.floor(Math.random() * orderArray.length);				
+// 				spliceArray = orderArray.splice(index, 1);
+// 				// console.log(spliceArray);
+// 				randomIndexArray.push(spliceArray[0]);	
+// 			}
+// 				console.log(randomIndexArray);
+// 	}
+// game.displayAvgPics();
+
+
+// This way produced a temporary array...Solve this by declaring a "global" variable within the object
+// avgLeadersImages(){ //create array of images
+// 		let aLIArray = [];
+// 		for(let i=0; i<this.avgLeaders.length; i++){
+// 			let images = this.avgLeaders[i].image;
+// 			aLIArray.push(images);
+// 			console.log(aLIArray);
+// 		}
+// 	}
+// game.avgLeadersImages();
