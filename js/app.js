@@ -16,11 +16,12 @@
 $('#gamePic').width(200);
 $('#gamePic').height(300);
 
-let numAvgPics = 5;//I should not need this anymore
+//let numAvgPics = 5;//I should not need this anymore
 //create a blank array within the game object to populate with images
 // this will give me access to the temporary arrays
 
 let showImageClickCount = 0;
+let playerName = 0;
 
 const game = {
 	avgLeaders: [
@@ -66,12 +67,13 @@ const game = {
 		 	image: "https://i.imgur.com/XYmo9jm.jpg"
 		 }
 	],
-	avgLeadersImages: [],
+	avgLeadersImages: [],//this holds a random array of AVG leaders images
 	displayImage: [], //this is the picture under the cover
 	createALIArray(){//create an array of images from the starting point data
 		let array = [];
 		for(let i=0; i<this.avgLeaders.length; i++){
 			let index = i;
+			
 			array.push(this.avgLeaders[index].image);
 		}
 		this.avgLeadersImages = array;
@@ -85,15 +87,24 @@ const game = {
 			this.avgLeadersImages.splice(index, 1);	
 		} else {
 			alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');
-		}	
+		}
+			$('#gameImage').attr('src',game.displayImage);		
+	},
+	pickClue(){
+		for(let i=0; i<this.avgLeaders.length; i++){
+			console.log(this.avgLeaders[i].image);
+			if(this.displayImage[0] === this.avgLeaders[i].image){
+			console.log(i);
+			console.log(this.avgLeaders[i].clue1);
+			break;
+			}
+		}
 	}
-
-	// pickRandomImage(){
-	// 	let index = Math.floor(Math.random() * game.avgLeaders.length);
-	// }	
+	
 }
 game.createALIArray();
-// game.pickImage();
+game.pickImage();
+game.pickClue();
 
 
 const newImage = () => {
@@ -151,6 +162,24 @@ $clue3.on('click', () => {
 });
 
 
+$('form').on('submit', (e) => {
+    // console.log('clicked');  
+    // console.log($('#input-box').val());
+    playerName = $('#input-box').val();
+    // const $petName = $('#petName');
+    // $petName.text(`Your pet's name is ${petName}`);// adds pet name to the DOM   
+    // pet.name = petName;// updates Tamagotchi name
+    // pet.setAgeTimer();
+    // pet.setHungerTimer();
+    // pet.setSleepinessTimer();
+    // pet.setBoredomTimer();
+    // // pet.morphPet();//still working on this
+    // console.log(pet); 
+    event.preventDefault();
+    $('#input-box').val('');   
+  });
+
+
 
 //Overthinking way to get an random array of any length...Solve this by declaring a "global" variable within the object
 // let numAvgPics = 5;
@@ -185,3 +214,14 @@ $clue3.on('click', () => {
 // 		}
 // 	}
 // game.avgLeadersImages();
+
+
+//simple break example...
+// let array = [1, 2, 3, 4]
+// for(let i=0; i<array.length; i++){
+//   console.log(array[i]);
+//   if(array[i] === 2){
+//     break;
+//   }
+
+// }
