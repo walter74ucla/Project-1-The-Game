@@ -43,6 +43,7 @@
 	border: 2px solid blue;
 	grid-column: 2;
 	grid-row: 3;
+	z-index: 1; /*this gives the z-axis, 0 is way back, 1 is way front*/
 	/*background: blue;*/
 	display: grid;
 }
