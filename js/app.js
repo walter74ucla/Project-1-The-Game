@@ -26,6 +26,7 @@ let playerName = 0;
 const game = {
 	avgLeaders: [
 		{
+			rank: 1,
 			firstName: 'Ty',
 			lastName: 'Cobb',
 			avg: 0.366,
@@ -34,6 +35,7 @@ const game = {
 			clue3: 'Nicknamed the Georgia Peach',
 			image: "https://i.imgur.com/COUC6oe.png"
 		 }, {
+		 	rank: 2,
 		 	firstName: 'Rogers',
 		 	lastName: 'Hornsby',
 		 	avg: 0.358,
@@ -42,6 +44,7 @@ const game = {
 		 	clue3: 'Nicknamed Rajah',
 		 	image: "https://i.imgur.com/99dWUcv.jpg"
 		 }, {
+		 	rank: 3,
 		 	firstName: 'Shoeless Joe',
 		 	lastName: 'Jackson',
 		 	avg: 0.356,
@@ -50,6 +53,7 @@ const game = {
 		 	clue3: '3 time AL Triples leader',
 		 	image: "https://i.imgur.com/pDcYqA4.jpg"
 		 }, {
+		 	rank: 4,
 		 	firstName: 'Lefty',
 		 	lastName: "O'Doul",
 		 	avg: 0.349,
@@ -58,6 +62,7 @@ const game = {
 		 	clue3: 'Born on March 4, 1897',
 		 	image: "https://i.imgur.com/QPYhL0t.jpg"
 		 }, {
+		 	rank: 5,
 		 	firstName: 'Ed',
 		 	lastName: "Delahanty",
 		 	avg: 0.346,
@@ -90,21 +95,43 @@ const game = {
 		}
 			$('#gameImage').attr('src',game.displayImage);		
 	},
-	pickClue(){
+	newCover(){
+		$('#clue1').css('opacity', 1);
+		$('#clue2').css('opacity', 1);
+		$('#clue3').css('opacity', 1);	
+	},
+	pickClue1(){
 		for(let i=0; i<this.avgLeaders.length; i++){
-			console.log(this.avgLeaders[i].image);
+			// console.log(this.avgLeaders[i].image);
 			if(this.displayImage[0] === this.avgLeaders[i].image){
-			console.log(i);
-			console.log(this.avgLeaders[i].clue1);
+			// console.log(i);
+			// console.log(this.avgLeaders[i].clue1);
+			$('.clues').append(this.avgLeaders[i].clue1);
 			break;
 			}
 		}
 	}
 	
 }
-game.createALIArray();
-game.pickImage();
-game.pickClue();
+// game.createALIArray();
+// game.pickImage();
+// game.pickClue();
+
+
+//reload the page to play again
+const $play = $('#play');
+$play.on('click', () => {
+	// console.log('button worked');
+	location.reload();
+});
+
+const $onAVGClick = $('#avg');
+$onAVGClick.on('click', () => {
+	// console.log('button worked');
+	game.createALIArray();
+	game.pickImage();
+	game.newCover();
+});
 
 
 const newImage = () => {
@@ -122,17 +149,7 @@ $showImage.on('click', () => {
 });
 
 
-const newCover = () => {
-	$('#clue1').css('opacity', 1);
-	$('#clue2').css('opacity', 1);
-	$('#clue3').css('opacity', 1);	
-}
 
-const $showCover = $('#showCover');
-$showCover.on('click', () => {
-	// console.log('button worked');
-	newCover();
-});
 
 const removeClue1 = () => {
 	$('#clue1').css('opacity', 0);
@@ -141,6 +158,7 @@ const removeClue1 = () => {
 const $clue1 = $('#clue1');
 $clue1.on('click', () => {
 	removeClue1();
+	game.pickClue1();
 });
 
 const removeClue2 = () => {
@@ -180,7 +198,7 @@ $('form').on('submit', (e) => {
   });
 
 
-
+//======================================================
 //Overthinking way to get an random array of any length...Solve this by declaring a "global" variable within the object
 // let numAvgPics = 5;
 // displayAvgPics(){
@@ -203,7 +221,7 @@ $('form').on('submit', (e) => {
 // 	}
 // game.displayAvgPics();
 
-
+//======================================================
 // This way produced a temporary array...Solve this by declaring a "global" variable within the object
 // avgLeadersImages(){ //create array of images
 // 		let aLIArray = [];
@@ -215,7 +233,7 @@ $('form').on('submit', (e) => {
 // 	}
 // game.avgLeadersImages();
 
-
+//======================================================
 //simple break example...
 // let array = [1, 2, 3, 4]
 // for(let i=0; i<array.length; i++){
@@ -223,5 +241,32 @@ $('form').on('submit', (e) => {
 //   if(array[i] === 2){
 //     break;
 //   }
-
 // }
+
+//======================================================
+// Last name check help...
+// Note: a == b compares the strings in a and b for being equal in the usual case-sensitive way. If you wish to compare without regard to upper or lower case characters, use a function similar to this:
+
+// function isEqual(str1, str2)
+//     {
+//     return str1.toUpperCase()===str2.toUpperCase();
+//     } // isEqual
+
+// Upper case is used instead of lower case in this function due to problems with certain UTF-8 character conversions.
+
+//======================================================
+// This was a testing function...
+// const newCover = () => {
+// 	$('#clue1').css('opacity', 1);
+// 	$('#clue2').css('opacity', 1);
+// 	$('#clue3').css('opacity', 1);	
+// }
+
+// const $showCover = $('#showCover');
+// $showCover.on('click', () => {
+// 	// console.log('button worked');
+// 	newCover();
+// });
+
+//======================================================
+
