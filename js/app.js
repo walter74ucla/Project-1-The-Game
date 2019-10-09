@@ -67,6 +67,7 @@ const game = {
 		 }
 	],
 	avgLeadersImages: [],
+	displayImage: [], //this is the picture under the cover
 	createALIArray(){//create an array of images from the starting point data
 		let array = [];
 		for(let i=0; i<this.avgLeaders.length; i++){
@@ -76,7 +77,15 @@ const game = {
 		this.avgLeadersImages = array;
 	},	
 	pickImage(){//pick random image and remove it from the images array
-
+		if(this.avgLeadersImages.length > 0){
+			let array = [];
+			let index = Math.floor(Math.random() * this.avgLeadersImages.length);
+			array.push(this.avgLeadersImages[index]);
+			this.displayImage = array;
+			this.avgLeadersImages.splice(index, 1);	
+		} else {
+			alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');
+		}	
 	}
 
 	// pickRandomImage(){
@@ -84,11 +93,12 @@ const game = {
 	// }	
 }
 game.createALIArray();
+// game.pickImage();
 
 
 const newImage = () => {
-
-	$('#gameImage').attr('src','https://i.imgur.com/COUC6oe.png');	
+	game.pickImage();
+	$('#gameImage').attr('src',game.displayImage);	
 	showImageClickCount++;
 }
 // newImage();
