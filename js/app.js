@@ -41,6 +41,22 @@ let avgLeaders = [
 	 	clue2: 'Played for PHA, CLE, and CWS',
 	 	clue3: '3 time AL Triples leader',
 	 	image: src="https://i.imgur.com/pDcYqA4.jpg"
+	 }, {
+	 	firstName: 'Lefty',
+	 	lastName: "O'Doul",
+	 	avg: 0.349,
+	 	clue1: '2 Batting Titles',
+	 	clue2: '11 year career',
+	 	clue3: 'Born on March 4, 1897',
+	 	image: src="https://i.imgur.com/QPYhL0t.jpg"
+	 }, {
+	 	firstName: 'Ed',
+	 	lastName: "Delahanty",
+	 	avg: 0.346,
+	 	clue1: '2 Batting Titles',
+	 	clue2: '16 year career',
+	 	clue3: 'Played for PHI, WSH, and CLE',
+	 	image: src="https://i.imgur.com/XYmo9jm.jpg"
 	 }
 ]
 
