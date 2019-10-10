@@ -21,6 +21,7 @@ $('#gamePic').height(300);
 // this will give me access to the temporary arrays
 
 let showImageClickCount = 0;
+let avgIndex = 0;// this will help me locate stuff in the avgLeaders array
 let playerName = 0;
 
 const game = {
@@ -107,34 +108,28 @@ const game = {
 			// console.log(i);
 			// console.log(this.avgLeaders[i].clue1);
 			$('.clues').append("<br>",this.avgLeaders[i].clue1);
+			avgIndex = i;
 			break;
 			}
 		}
 	},
 	pickClue2(){
-		for(let i=0; i<this.avgLeaders.length; i++){
-			// console.log(this.avgLeaders[i].image);
-			if(this.displayImage[0] === this.avgLeaders[i].image){
-			// console.log(i);
-			// console.log(this.avgLeaders[i].clue1);
-			$('.clues').append("<br>",this.avgLeaders[i].clue2);
-			break;
-			}
-		}
+		$('.clues').append("<br>",this.avgLeaders[avgIndex].clue2);
 	},
 	pickClue3(){
-		for(let i=0; i<this.avgLeaders.length; i++){
-			// console.log(this.avgLeaders[i].image);
-			if(this.displayImage[0] === this.avgLeaders[i].image){
-			// console.log(i);
-			// console.log(this.avgLeaders[i].clue1);
-			$('.clues').append("<br>",this.avgLeaders[i].clue3);
-			break;
-			}
+		$('.clues').append("<br>",this.avgLeaders[avgIndex].clue3);
+	},
+	checkForRightAnswer(){
+		if(playerName.toUpperCase===this.avgLeaders[avgIndex].lastName.toUpperCase){
+			alert('You are correct');
+		} else {
+			alert('Incorrect');
 		}
 	}
-	
 }
+	
+	
+
 // game.createALIArray();
 // game.pickImage();
 // game.pickClue();
@@ -208,6 +203,7 @@ $('form').on('submit', (e) => {
     // console.log('clicked');  
     // console.log($('#input-box').val());
     playerName = $('#input-box').val();
+    game.checkForRightAnswer();
     // const $petName = $('#petName');
     // $petName.text(`Your pet's name is ${petName}`);// adds pet name to the DOM   
     // pet.name = petName;// updates Tamagotchi name
