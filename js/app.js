@@ -106,7 +106,29 @@ const game = {
 			if(this.displayImage[0] === this.avgLeaders[i].image){
 			// console.log(i);
 			// console.log(this.avgLeaders[i].clue1);
-			$('.clues').append(this.avgLeaders[i].clue1);
+			$('.clues').append("<br>",this.avgLeaders[i].clue1);
+			break;
+			}
+		}
+	},
+	pickClue2(){
+		for(let i=0; i<this.avgLeaders.length; i++){
+			// console.log(this.avgLeaders[i].image);
+			if(this.displayImage[0] === this.avgLeaders[i].image){
+			// console.log(i);
+			// console.log(this.avgLeaders[i].clue1);
+			$('.clues').append("<br>",this.avgLeaders[i].clue2);
+			break;
+			}
+		}
+	},
+	pickClue3(){
+		for(let i=0; i<this.avgLeaders.length; i++){
+			// console.log(this.avgLeaders[i].image);
+			if(this.displayImage[0] === this.avgLeaders[i].image){
+			// console.log(i);
+			// console.log(this.avgLeaders[i].clue1);
+			$('.clues').append("<br>",this.avgLeaders[i].clue3);
 			break;
 			}
 		}
@@ -168,6 +190,7 @@ const removeClue2 = () => {
 const $clue2 = $('#clue2');
 $clue2.on('click', () => {
 	removeClue2();
+	game.pickClue2();
 });
 
 const removeClue3 = () => {
@@ -177,6 +200,7 @@ const removeClue3 = () => {
 const $clue3 = $('#clue3');
 $clue3.on('click', () => {
 	removeClue3();
+	game.pickClue3();
 });
 
 
