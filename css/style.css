@@ -75,7 +75,7 @@
 	opacity: 0;
 }
 
-.scoreboard {
+.scoreboardTop {
 	border: 2px solid blue;
 	grid-column: 3;
 	grid-row: 3;	

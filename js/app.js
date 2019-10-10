@@ -108,17 +108,22 @@ const game = {
 			if(this.displayImage[0] === this.avgLeaders[i].image){
 			// console.log(i);
 			// console.log(this.avgLeaders[i].clue1);
-			$('.clues').append("<br>",this.avgLeaders[i].clue1);
+			// add an ordered list here...
+			const $ol = $('<ol id="clueList"></ol>');
+			$('.clues').append($ol);
+			$('#clueList').append(`<li id="clueList1">${this.avgLeaders[i].clue1}</li>`);
+			// ('.clues').append("<br>",this.avgLeaders[i].clue1);
+			// $ol.append("<br>",this.avgLeaders[i].clue1);
 			avgIndex = i;
 			break;
 			}
 		}
 	},
 	pickClue2(){
-		$('.clues').append("<br>",this.avgLeaders[avgIndex].clue2);
+		$('#clueList').append(`<li id="clueList2">${this.avgLeaders[avgIndex].clue2}</li>`);
 	},
 	pickClue3(){
-		$('.clues').append("<br>",this.avgLeaders[avgIndex].clue3);
+		$('#clueList').append(`<li id="clueList3">${this.avgLeaders[avgIndex].clue3}</li>`);
 	},
 	checkForRightAnswer(){
 		if(playerName.toUpperCase() === this.avgLeaders[avgIndex].lastName.toUpperCase()){
@@ -131,8 +136,16 @@ const game = {
 			//add Player 1 game yield 0 points
 		}
 	},
+	clearTheClues(){
+		// $ul.empty();
+
+	},
 	addToScoreboard(){
-		$('.scoreboard').append("<br>", "The player is " + this.avgLeaders[avgIndex].firstName + " " + this.avgLeaders[avgIndex].lastName + ".  His rank is " + this.avgLeaders[avgIndex].rank + ".");
+		const $ol = $('<ol id="plyrListRank"></ol>');
+		$('.scoreboardTop').append($ol);
+		$('#plyrListRank').append(`<li id="player">The player is ${this.avgLeaders[avgIndex].firstName} ${this.avgLeaders[avgIndex].lastName}.  His rank is ${this.avgLeaders[avgIndex].rank}.</li>`);
+		// when you add HR and RBI categories, make sure you empty the scoreboard
+		
 		// if(avgLeadersImages.length === 0){
 		// 	alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');			
 		// } else {
@@ -208,6 +221,7 @@ $('form').on('submit', (e) => {
     // console.log($('#input-box').val());
     playerName = $('#input-box').val();
     game.checkForRightAnswer();
+	$('#clueList').empty();
     game.addToScoreboard();
  	game.pickImage();
 	game.newCover();
@@ -301,3 +315,8 @@ $('form').on('submit', (e) => {
 // 	newImage();
 	
 // });
+
+//======================================================
+// This is an example of an inline break...not using this anymore, trying ordered list
+// $('.clues').append("<br>",this.avgLeaders[i].clue1);
+// $('.scoreboard').append("<br>", "The player is " + this.avgLeaders[avgIndex].firstName + " " + this.avgLeaders[avgIndex].lastName + ".  His rank is " + this.avgLeaders[avgIndex].rank + ".");
