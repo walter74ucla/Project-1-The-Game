@@ -12,9 +12,6 @@
 // });
 // $('.images').attr('src','https://i.imgur.com/COUC6oe.png');
 
-// setting the game picture dimensions
-$('#gamePic').width(200);
-$('#gamePic').height(300);
 
 //let numAvgPics = 5;//I should not need this anymore
 //create a blank array within the game object to populate with images
@@ -23,6 +20,9 @@ $('#gamePic').height(300);
 let showImageClickCount = 0;
 let avgIndex = 0;// this will help me locate stuff in the avgLeaders array
 let playerName = 0;
+let enterCount =1;
+let correctPoint = 1;// you get 1 point for a correct answer
+let incorrectPoint = 0;// you get 0 points for an incorrect answer
 
 const game = {
 	avgLeaders: [
@@ -92,6 +92,7 @@ const game = {
 			this.displayImage = array;
 			this.avgLeadersImages.splice(index, 1);	
 		} else {
+			// return true;
 			alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');
 		}
 			$('#gameImage').attr('src',game.displayImage);		
@@ -120,11 +121,26 @@ const game = {
 		$('.clues').append("<br>",this.avgLeaders[avgIndex].clue3);
 	},
 	checkForRightAnswer(){
-		if(playerName.toUpperCase===this.avgLeaders[avgIndex].lastName.toUpperCase){
+		if(playerName.toUpperCase() === this.avgLeaders[avgIndex].lastName.toUpperCase()){
 			alert('You are correct');
+			//create lower scoreboard
+			//add Player 1 game yield 1 point
 		} else {
 			alert('Incorrect');
+			//create lower scoreboard
+			//add Player 1 game yield 0 points
 		}
+	},
+	addToScoreboard(){
+		$('.scoreboard').append("<br>", "The player is " + this.avgLeaders[avgIndex].firstName + " " + this.avgLeaders[avgIndex].lastName + ".  His rank is " + this.avgLeaders[avgIndex].rank + ".");
+		// if(avgLeadersImages.length === 0){
+		// 	alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');			
+		// } else {
+			
+		// 	enterCount++;
+		// }
+		
+		
 	}
 }
 	
@@ -151,19 +167,7 @@ $onAVGClick.on('click', () => {
 });
 
 
-const newImage = () => {
-	game.pickImage();
-	$('#gameImage').attr('src',game.displayImage);	
-	showImageClickCount++;
-}
-// newImage();
 
-const $showImage = $('#showImage');
-$showImage.on('click', () => {
-	// console.log('button worked');
-	newImage();
-	
-});
 
 
 
@@ -204,15 +208,9 @@ $('form').on('submit', (e) => {
     // console.log($('#input-box').val());
     playerName = $('#input-box').val();
     game.checkForRightAnswer();
-    // const $petName = $('#petName');
-    // $petName.text(`Your pet's name is ${petName}`);// adds pet name to the DOM   
-    // pet.name = petName;// updates Tamagotchi name
-    // pet.setAgeTimer();
-    // pet.setHungerTimer();
-    // pet.setSleepinessTimer();
-    // pet.setBoredomTimer();
-    // // pet.morphPet();//still working on this
-    // console.log(pet); 
+    game.addToScoreboard();
+ 	game.pickImage();
+	game.newCover();
     event.preventDefault();
     $('#input-box').val('');   
   });
@@ -289,4 +287,17 @@ $('form').on('submit', (e) => {
 // });
 
 //======================================================
+// This was a testing function...
+// const newImage = () => {
+// 	game.pickImage();
+// 	$('#gameImage').attr('src',game.displayImage);	
+// 	showImageClickCount++;
+// }
+// // newImage();
 
+// const $showImage = $('#showImage');
+// $showImage.on('click', () => {
+// 	// console.log('button worked');
+// 	newImage();
+	
+// });

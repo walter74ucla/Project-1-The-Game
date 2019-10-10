@@ -35,7 +35,7 @@
 	/*grid-template-columns: repeat(3, 1fr);
 	grid-gap: 1em;
 	grid-auto-rows: minmax(100px, auto);*/
-	/*display: flex; so image can be centered*/
+	display: flex; /*so image can be centered*/
 	
 }
 
@@ -94,7 +94,7 @@
 	grid-row: 4;
 }
 
-#gamePic {
+#gameImage {
 	
 	margin: auto;
 	border: 2px solid pink;
