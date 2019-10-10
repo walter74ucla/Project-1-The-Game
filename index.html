@@ -6,24 +6,45 @@
 	<title>Project-1-the-game</title>
 </head>
 <body>
-	<div class="wrapper"> <!-- sets up grid container -->
-		<div class="start">
+
+	<div class="wrapper">
+	 <!-- sets up grid container -->
+		<header class="start">
 			<button id="play">Play</button>
 			<--Click this button to reset the game.  Start by clicking on one of the categories below.  Guess which All-Time Top 5 MLB player is behind the curtain.  Click on a clue to reveal a hint.  Enter your guess at the bottom to see if you are right. 
-		</div>
-		<div class="title">Triple Crown Trivia
+		</header>
+
+		<div class="title">
+			<h6>Triple Crown Trivia</h6>
 			<button id="avg">AVG</button>
 			<button>HR</button>
 			<button>RBI</button>
 		</div>
 
-		<div class="clues">Clues
-			</div>
-		<div class="images">
-			<img id="gameImage" src="https://i.imgur.com/rYM2n7D.jpg" alt="gameImage" height="200" width="300">
+		<div class="clues">
+			<h2>Clues</h2>
 		</div>
-		<div class="scoreboardTop">Player and Rank</div>
-		<div class="stats">Stats</div>
+
+		<div class="images">
+			<div class="insideImage">
+				<div id="clue1">Clue 1</div>
+				<div id="clue2">Clue 2</div>
+				<div id="clue3">Clue 3</div>
+				<!-- <div class="playerImage">
+					<img id="gameImage" src="https://i.imgur.com/rYM2n7D.jpg" alt="gameImage" height="200" width="300">
+				</div>	 -->
+			</div>
+			
+		</div>
+
+		<div class="scoreboardTop">
+			<h2>Player and Rank<h2>
+		</div>
+
+		<div class="stats">
+			<h2>Stats</h2>
+		</div>
+
 		<div class="lastName">
 			<form>
 				<label for="name">Enter Last Name:</label>
@@ -32,13 +53,13 @@
 			</form>
 			
 		</div>
+
 		<div class="cover">
 			<div class="coverParts">
-				<div id="clue1">Clue 1</div>
-				<div id="clue2">Clue 2</div>
-				<div id="clue3">Clue 3</div>
+				
 			</div>
 		</div>
+
 		<div class="test">Testing Buttons
 			<button id="showImage">show image</button>
 			<button id="showCover">show cover</button>

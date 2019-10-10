@@ -24,6 +24,8 @@ let enterCount =1;
 let correctPoint = 1;// you get 1 point for a correct answer
 let incorrectPoint = 0;// you get 0 points for an incorrect answer
 
+let currentImage = null;
+
 const game = {
 	avgLeaders: [
 		{
@@ -90,12 +92,15 @@ const game = {
 			let index = Math.floor(Math.random() * this.avgLeadersImages.length);
 			array.push(this.avgLeadersImages[index]);
 			this.displayImage = array;
+			currentImage = this.displayImage[0];
 			this.avgLeadersImages.splice(index, 1);	
 		} else {
 			// return true;
 			alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');
 		}
-			$('#gameImage').attr('src',game.displayImage);		
+			$('.insideImage').css('background', `url(${currentImage}) no-repeat center`);
+			$('.insideImage').css('background-size', 'cover');
+			// $('#gameImage').attr('src',game.displayImage);		
 	},
 	newCover(){
 		$('#clue1').css('opacity', 1);
@@ -135,10 +140,6 @@ const game = {
 			//create lower scoreboard
 			//add Player 1 game yield 0 points
 		}
-	},
-	clearTheClues(){
-		// $ul.empty();
-
 	},
 	addToScoreboard(){
 		const $ol = $('<ol id="plyrListRank"></ol>');
