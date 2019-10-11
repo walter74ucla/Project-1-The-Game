@@ -1,6 +1,6 @@
 
 body {
-	background:url("https://i.imgur.com/65AWe6E.jpg") no-repeat center fixed;
+	background: url("https://i.imgur.com/65AWe6E.jpg") no-repeat center fixed;
   	background-size: cover;
 }
 
@@ -12,24 +12,43 @@ body {
 	"clues image scoreboard"
 	"test lastName stats";
 	grid-template-columns: 1fr 1fr 1fr; /*or use %vh, view height*/ 
-	grid-template-rows: 10vh 10vh 70vh 10vh;
+	grid-template-rows: 15vh 10vh 65vh 10vh;
 	height: 100vh;/*makes it take the whole screen height*/ 
 	/*grid-column-gap: 1em;
 	grid-row-gap: 1em;*/
-	grid-gap: 1em; /*this give equal spacing between column and row*/
+	/*grid-gap: 0.5em; /*this gives equal spacing between column and row*/
 	
 }
 
 .start {
-	grid-area: header;
+	grid-area: tct;
 	border: 2px solid purple;
-	
+	text-align: center;
+	background: url("https://i.imgur.com/a9mf1mk.jpg") no-repeat center fixed;
+  	background-size: cover;
+  	font-size: 16px;
+  	font-weight: bold;
+}
+
+h1 {
+	font-size: 25px;
 }
 
 .title {
-	grid-area: tct;
+	grid-area: header;
 	border: 2px solid orange;
-	
+	/*display: flex;*/
+	text-align: center;
+	/*background: url(https://i.imgur.com/FrAZF9v.jpg) no-repeat center fixed;
+	background-size: cover;*/
+}
+
+.titleBut {
+	background-color: gold;
+	height: 30px;
+	width: 100px;
+	font-weight: bold;
+	margin: 5px;
 }
 
 .clues {
@@ -126,13 +145,21 @@ body {
 .scoreboardTop {
 	grid-area: scoreboard;
 	border: 2px solid blue;
+	opacity: .5;
+	background: white;
 	color: #051E41;
-	font-weight: bold;	
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;	
 }
 
 .stats {
 	grid-area: stats;
-	border: 2px solid gold;
+	/*border: 2px solid gold;*/
+	background: grey;
+	text-align: center;
 	
 
 }

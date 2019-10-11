@@ -107,6 +107,9 @@ const game = {
 		$('#clue2').css('opacity', 1);
 		$('#clue3').css('opacity', 1);	
 	},
+	setClueOrderedList(){
+
+	},
 	pickClue1(){
 		for(let i=0; i<this.avgLeaders.length; i++){
 			// console.log(this.avgLeaders[i].image);
@@ -125,6 +128,7 @@ const game = {
 		}
 	},
 	pickClue2(){
+
 		$('#clueList').append(`<li id="clueList2">${this.avgLeaders[avgIndex].clue2}</li>`);
 	},
 	pickClue3(){
@@ -165,12 +169,6 @@ const game = {
 // game.pickClue();
 
 
-//reload the page to play again
-const $play = $('#play');
-$play.on('click', () => {
-	// console.log('button worked');
-	location.reload();
-});
 
 const $onAVGClick = $('#avg');
 $onAVGClick.on('click', () => {
@@ -180,7 +178,14 @@ $onAVGClick.on('click', () => {
 	game.newCover();
 });
 
-
+//move on to the next player
+const $next = $('#next');
+$next.on('click', () => {
+	// console.log('button worked');
+	// location.reload();
+	game.pickImage();
+	game.newCover();
+});
 
 
 
@@ -224,8 +229,7 @@ $('form').on('submit', (e) => {
     game.checkForRightAnswer();
 	$('#clueList').empty();
     game.addToScoreboard();
- 	game.pickImage();
-	game.newCover();
+ 	
     event.preventDefault();
     $('#input-box').val('');   
   });
