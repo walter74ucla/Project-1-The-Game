@@ -10,7 +10,7 @@ body {
 	"header header header"
 	"tct tct tct"
 	"clues image scoreboard"
-	"test lastName stats";
+	"lastName lastName stats";
 	grid-template-columns: 1fr 1fr 1fr; /*or use %vh, view height*/ 
 	grid-template-rows: 15vh 10vh 65vh 10vh;
 	height: 100vh;/*makes it take the whole screen height*/ 
@@ -60,6 +60,7 @@ h1 {
 	grid-row: 3/5;*/
 	color: #BB0021;
 	font-weight: bold;
+	font-size: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -149,6 +150,7 @@ h1 {
 	background: white;
 	color: #051E41;
 	font-weight: bold;
+	font-size: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -167,7 +169,8 @@ h1 {
 .lastName {
 	grid-area: lastName;
 	border: 2px solid red;
-	
+	background: url("https://i.imgur.com/a9mf1mk.jpg") no-repeat center fixed;
+  	background-size: cover;
 }
 
 #gameImage {
@@ -176,8 +179,12 @@ h1 {
 
 }
 
-.test {
+/*#cluelist1 #cluelist2 #cluelist3 {
+
+}*/
+
+/*.test {
 	grid-area: test;
 	border: 2px solid yellow;
-}
+}*/
 

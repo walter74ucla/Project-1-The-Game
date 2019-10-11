@@ -97,6 +97,7 @@ const game = {
 		} else {
 			// return true;
 			alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');
+			location.reload();
 		}
 			$('.insideImage').css('background', `url(${currentImage}) no-repeat center`);
 			$('.insideImage').css('background-size', 'cover');
@@ -108,9 +109,6 @@ const game = {
 		$('#clue3').css('opacity', 1);	
 	},
 	setClueOrderedList(){
-
-	},
-	pickClue1(){
 		for(let i=0; i<this.avgLeaders.length; i++){
 			// console.log(this.avgLeaders[i].image);
 			if(this.displayImage[0] === this.avgLeaders[i].image){
@@ -119,16 +117,15 @@ const game = {
 			// add an ordered list here...
 			const $ol = $('<ol id="clueList"></ol>');
 			$('.clues').append($ol);
-			$('#clueList').append(`<li id="clueList1">${this.avgLeaders[i].clue1}</li>`);
-			// ('.clues').append("<br>",this.avgLeaders[i].clue1);
-			// $ol.append("<br>",this.avgLeaders[i].clue1);
 			avgIndex = i;
 			break;
 			}
 		}
 	},
+	pickClue1(){
+		$('#clueList').append(`<li id="clueList1">${this.avgLeaders[avgIndex].clue1}</li>`);
+	},
 	pickClue2(){
-
 		$('#clueList').append(`<li id="clueList2">${this.avgLeaders[avgIndex].clue2}</li>`);
 	},
 	pickClue3(){
@@ -148,7 +145,7 @@ const game = {
 	addToScoreboard(){
 		const $ol = $('<ol id="plyrListRank"></ol>');
 		$('.scoreboardTop').append($ol);
-		$('#plyrListRank').append(`<li id="player">The player is ${this.avgLeaders[avgIndex].firstName} ${this.avgLeaders[avgIndex].lastName}.  His rank is ${this.avgLeaders[avgIndex].rank}.</li>`);
+		$('#plyrListRank').append(`<li id="player">The player is ${this.avgLeaders[avgIndex].firstName} ${this.avgLeaders[avgIndex].lastName}.  His average is ${this.avgLeaders[avgIndex].avg}.  His rank is ${this.avgLeaders[avgIndex].rank}.</li>`);
 		// when you add HR and RBI categories, make sure you empty the scoreboard
 		
 		// if(avgLeadersImages.length === 0){
@@ -176,6 +173,7 @@ $onAVGClick.on('click', () => {
 	game.createALIArray();
 	game.pickImage();
 	game.newCover();
+	game.setClueOrderedList();
 });
 
 //move on to the next player
@@ -185,6 +183,7 @@ $next.on('click', () => {
 	// location.reload();
 	game.pickImage();
 	game.newCover();
+	game.setClueOrderedList();
 });
 
 
