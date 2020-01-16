@@ -18,7 +18,7 @@
 // this will give me access to the temporary arrays
 
 let showImageClickCount = 0;
-let avgIndex = 0;// this will help me locate stuff in the avgLeaders array
+let catIndex = 0;// this will help me locate stuff in the catLeaders array
 let playerName = 0;
 let enterCount =1;
 let correctPoint = 1;// you get 1 point for a correct answer
@@ -26,6 +26,7 @@ let incorrectPoint = 0;// you get 0 points for an incorrect answer
 
 let catLeaders = [];
 let category = null;
+let value = null;
 let imageArray = [];
 let currentImage = null;
 
@@ -247,7 +248,7 @@ const game = {
 			// add an ordered list here...
 			const $ol = $('<ol id="clueList"></ol>');
 			$('.clues').append($ol);
-			avgIndex = i;
+			catIndex = i;
 			break;
 			}
 		}
@@ -267,13 +268,13 @@ const game = {
 		}
 	},
 	pickClue1(){
-		$('#clueList').append(`<li id="clueList1">${this.catLeaders[avgIndex].clue1}</li>`);
+		$('#clueList').append(`<li id="clueList1">${this.catLeaders[catIndex].clue1}</li>`);
 	},
 	pickClue2(){
-		$('#clueList').append(`<li id="clueList2">${this.catLeaders[avgIndex].clue2}</li>`);
+		$('#clueList').append(`<li id="clueList2">${this.catLeaders[catIndex].clue2}</li>`);
 	},
 	pickClue3(){
-		$('#clueList').append(`<li id="clueList3">${this.catLeaders[avgIndex].clue3}</li>`);
+		$('#clueList').append(`<li id="clueList3">${this.catLeaders[catIndex].clue3}</li>`);
 	},
 	pickClue1OLD(){//update pickClue# as appropriate
 		$('#clueList').append(`<li id="clueList1">${this.avgLeaders[avgIndex].clue1}</li>`);
@@ -285,7 +286,7 @@ const game = {
 		$('#clueList').append(`<li id="clueList3">${this.avgLeaders[avgIndex].clue3}</li>`);
 	},
 	checkForRightAnswer(){
-		if(playerName.toUpperCase() === this.catLeaders[avgIndex].lastName.toUpperCase()){
+		if(playerName.toUpperCase() === this.catLeaders[catIndex].lastName.toUpperCase()){
 			alert('You are correct');
 			//create lower scoreboard
 			//add Player 1 game yield 1 point
@@ -296,9 +297,16 @@ const game = {
 		}
 	},
 	addToScoreboard(){
+		if(category==='AVG'){
+			value = this.catLeaders[catIndex].avg;
+		} else if(category==='HR'){
+			value = this.catLeaders[catIndex].hr;
+		} else {
+			value = this.catLeaders[catIndex].rbi;
+		}
 		const $ol = $('<ol id="plyrListRank"></ol>');
 		$('.scoreboardTop').append($ol);
-		$('#plyrListRank').append(`<li id="player">The player is ${this.catLeaders[avgIndex].firstName} ${this.catLeaders[avgIndex].lastName}.  His ${category} is ${this.catLeaders[avgIndex].avg}.  His rank is ${this.catLeaders[avgIndex].rank}.</li>`);
+		$('#plyrListRank').append(`<li id="player">The player is ${this.catLeaders[catIndex].firstName} ${this.catLeaders[catIndex].lastName}.  His ${category} is ${value}.  His rank is ${this.catLeaders[catIndex].rank}.</li>`);
 		// when you add HR and RBI categories, make sure you empty the scoreboard
 		
 		// if(avgLeadersImages.length === 0){
@@ -335,6 +343,28 @@ $onAVGClick.on('click', () => {
 	// imageArray = this.avgLeaders;
 	category = 'AVG';
 	game.createImageArray(game.avgLeaders);
+	game.pickImage();
+	game.newCover();
+	game.setClueOrderedList();
+});
+
+const $onHRClick = $('#hr');
+$onHRClick.on('click', () => {
+	// console.log('button worked');
+	// imageArray = this.avgLeaders;
+	category = 'HR';
+	game.createImageArray(game.hrLeaders);
+	game.pickImage();
+	game.newCover();
+	game.setClueOrderedList();
+});
+
+const $onRBIClick = $('#rbi');
+$onRBIClick.on('click', () => {
+	// console.log('button worked');
+	// imageArray = this.avgLeaders;
+	category = 'RBI';
+	game.createImageArray(game.rbiLeaders);
 	game.pickImage();
 	game.newCover();
 	game.setClueOrderedList();
