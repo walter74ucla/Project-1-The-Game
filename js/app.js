@@ -75,6 +75,102 @@ const game = {
 		 	image: "https://i.imgur.com/XYmo9jm.jpg"
 		 }
 	],
+	hrLeaders: [
+		{
+			rank: 1,
+			firstName: 'Barry',
+			lastName: 'Bonds',
+			hr: 762,
+			clue1: '7 NL MVP wins and 12 Silver Slugger Awards',
+			clue2: '14-time All-Star and 8 Gold Glove awards',
+			clue3: 'All-time BB leader',
+			image: "https://i.imgur.com/cc11xLb.jpg"
+		 }, {
+		 	rank: 2,
+		 	firstName: 'Hank',
+		 	lastName: 'Aaron',
+		 	hr: 755,
+		 	clue1: 'Last Negro league player on an MLB roster',
+		 	clue2: '21-time All-Star, held HR record for 33 years',
+		 	clue3: 'All-time RBI and TB leader',
+		 	image: "https://i.imgur.com/969A7Un.jpg"
+		 }, {
+		 	rank: 3,
+		 	firstName: 'Babe',
+		 	lastName: 'Ruth',
+		 	hr: 714,
+		 	clue1: '7-time World Series champion',
+		 	clue2: '1-time AL batting champ and 1-time AL ERA champion',
+		 	clue3: 'All-time SLG leader',
+		 	image: "https://i.imgur.com/gt8pE3w.jpg"
+		 }, {
+		 	rank: 4,
+		 	firstName: 'Alex',
+		 	lastName: 'Rodriguez',
+		 	hr: 696,
+		 	clue1: '3 AL MVP wins',
+		 	clue2: '14-time All-Star and 10 Silver Slugger awards',
+		 	clue3: '1st pick of 1993 draft',
+		 	image: "https://i.imgur.com/2QKuiaX.jpg"
+		 }, {
+		 	rank: 5,
+		 	firstName: 'Willie',
+		 	lastName: 'Mays',
+		 	hr: 660,
+		 	clue1: 'ROY in 1951, 24-time All-Star',
+		 	clue2: '2-time NL MVP and 12 Gold Glove awards',
+		 	clue3: 'Nicknamed The Say Hey Kid',
+		 	image: "https://i.imgur.com/2h3OR5O.jpg"
+		 }
+	],
+	rbiLeaders: [
+		{
+			rank: 1,
+			firstName: 'Hank',
+		 	lastName: 'Aaron',
+			rbi: 2297,
+			clue1: 'Last Negro league player on an MLB roster',
+		 	clue2: '21-time All-Star, held HR record for 33 years',
+		 	clue3: 'All-time RBI and TB leader',
+		 	image: "https://i.imgur.com/969A7Un.jpg"
+		 }, {
+		 	rank: 2,
+		 	firstName: 'Babe',
+		 	lastName: 'Ruth',
+		 	rbi: 2214,
+		 	clue1: '7-time World Series champion',
+		 	clue2: '1-time AL batting champ and 1-time AL ERA champion',
+		 	clue3: 'All-time SLG leader',
+		 	image: "https://i.imgur.com/gt8pE3w.jpg"
+		 }, {
+		 	rank: 3,
+		 	firstName: 'Alex',
+		 	lastName: 'Rodriguez',
+		 	rbi: 2086,
+		 	clue1: '3 AL MVP wins',
+		 	clue2: '14-time All-Star and 10 Silver Slugger awards',
+		 	clue3: '1st pick of 1993 draft',
+		 	image: "https://i.imgur.com/2QKuiaX.jpg"
+		 }, {
+		 	rank: '4t',
+		 	firstName: 'Cap',
+		 	lastName: 'Anson',
+		 	rbi: 2075,
+		 	clue1: 'played for 27 seasons',
+		 	clue2: 'possibly the first player with 3,000 hits',
+		 	clue3: '4-time batting champion',
+		 	image: "https://i.imgur.com/SqOe12M.jpg"
+		 }, {
+		 	rank: '4t',
+		 	firstName: 'Albert',
+		 	lastName: 'Pujols',
+		 	hr: 2075,
+		 	clue1: '13th round pick in 1999',
+		 	clue2: '3-time MVP and 6-time Silver Slugger',
+		 	clue3: 'Career GDP leader',
+		 	image: "https://i.imgur.com/aFWqYhf.jpg"
+		 }
+	],
 	avgLeadersImages: [],//this holds a random array of AVG leaders images
 	displayImage: [], //this is the picture under the cover
 	createALIArray(){//create an array of images from the starting point data

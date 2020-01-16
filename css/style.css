@@ -176,12 +176,21 @@ h1 {
 #gameImage {
 	margin: auto;
 	border: 2px solid pink;
-
 }
 
-/*#cluelist1 #cluelist2 #cluelist3 {
+/*4:28 mark in this youtube video*/
+/*https://youtu.be/g0Aq2kP5-CY*/
+/*#cluelist > li {
+	background: #eee;
+	padding: 1em;
+	border: 1px solid black;
+	z-index: 1;
+}
 
+#cluelist > li:nth-child(odd){
+	background: #ddd;
 }*/
+
 
 /*.test {
 	grid-area: test;
