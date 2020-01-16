@@ -24,6 +24,8 @@ let enterCount =1;
 let correctPoint = 1;// you get 1 point for a correct answer
 let incorrectPoint = 0;// you get 0 points for an incorrect answer
 
+let category = null;
+let imageArray = [];
 let currentImage = null;
 
 const game = {
@@ -173,6 +175,7 @@ const game = {
 	],
 	avgLeadersImages: [],//this holds a random array of AVG leaders images
 	displayImage: [], //this is the picture under the cover
+	leadersImages: [], //this holds a random array of leaders images
 	createALIArray(){//create an array of images from the starting point data
 		let array = [];
 		for(let i=0; i<this.avgLeaders.length; i++){
@@ -181,8 +184,35 @@ const game = {
 			array.push(this.avgLeaders[index].image);
 		}
 		this.avgLeadersImages = array;
-	},	
-	pickImage(){//pick random image and remove it from the images array
+	},
+	createImageArray(leaders){//create an array of images from the game object
+		console.log(leaders);
+		let array = [];
+		for(let i=0; i<leaders.length; i++){
+			let index = i;
+			
+			array.push(leaders[index].image);
+		}
+		this.leadersImages = array;	
+	},
+	pickImage(){//pick random image and remove it from the leadersImages array
+		if(this.leadersImages.length > 0){
+			let array = [];
+			let index = Math.floor(Math.random() * this.leadersImages.length);
+			array.push(this.leadersImages[index]);
+			this.displayImage = array;
+			currentImage = this.displayImage[0];
+			this.leadersImages.splice(index, 1);	
+		} else {
+			// return true;
+			alert(`You completed guessing through the top 5 ${category} Leaders of all time. Try another category or try the ${category} category again.`);
+			location.reload();
+		}
+			$('.insideImage').css('background', `url(${currentImage}) no-repeat center`);
+			$('.insideImage').css('background-size', 'cover');
+			// $('#gameImage').attr('src',game.displayImage);		
+	},
+	pickImageOLD(){//pick random image and remove it from the images array
 		if(this.avgLeadersImages.length > 0){
 			let array = [];
 			let index = Math.floor(Math.random() * this.avgLeadersImages.length);
@@ -204,7 +234,21 @@ const game = {
 		$('#clue2').css('opacity', 1);
 		$('#clue3').css('opacity', 1);	
 	},
-	setClueOrderedList(){
+	setClueOrderedList(leaders){
+		for(let i=0; i<leaders.length; i++){
+			// console.log(leaders[i].image);
+			if(this.displayImage[0] === leaders[i].image){
+			// console.log(i);
+			// console.log(leaders[i].clue1);
+			// add an ordered list here...
+			const $ol = $('<ol id="clueList"></ol>');
+			$('.clues').append($ol);
+			avgIndex = i;
+			break;
+			}
+		}
+	},
+	setClueOrderedListOLD(){
 		for(let i=0; i<this.avgLeaders.length; i++){
 			// console.log(this.avgLeaders[i].image);
 			if(this.displayImage[0] === this.avgLeaders[i].image){
@@ -218,7 +262,7 @@ const game = {
 			}
 		}
 	},
-	pickClue1(){
+	pickClue1(){//update pickClue# as appropriate
 		$('#clueList').append(`<li id="clueList1">${this.avgLeaders[avgIndex].clue1}</li>`);
 	},
 	pickClue2(){
@@ -263,13 +307,24 @@ const game = {
 
 
 
+// const $onAVGClick = $('#avg');
+// $onAVGClick.on('click', () => {
+// 	// console.log('button worked');
+// 	game.createALIArray();
+// 	game.pickImage();
+// 	game.newCover();
+// 	game.setClueOrderedList();
+// });
+
 const $onAVGClick = $('#avg');
 $onAVGClick.on('click', () => {
 	// console.log('button worked');
-	game.createALIArray();
+	// imageArray = this.avgLeaders;
+	category = 'AVG';
+	game.createImageArray(game.avgLeaders);
 	game.pickImage();
 	game.newCover();
-	game.setClueOrderedList();
+	game.setClueOrderedList(game.avgLeaders);
 });
 
 //move on to the next player
@@ -279,7 +334,7 @@ $next.on('click', () => {
 	// location.reload();
 	game.pickImage();
 	game.newCover();
-	game.setClueOrderedList();
+	game.setClueOrderedList();//add game.avgLeaders here
 });
 
 
