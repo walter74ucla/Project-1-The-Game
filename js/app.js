@@ -24,6 +24,7 @@ let enterCount =1;
 let correctPoint = 1;// you get 1 point for a correct answer
 let incorrectPoint = 0;// you get 0 points for an incorrect answer
 
+let catLeaders = [];
 let category = null;
 let imageArray = [];
 let currentImage = null;
@@ -187,6 +188,7 @@ const game = {
 	},
 	createImageArray(leaders){//create an array of images from the game object
 		console.log(leaders);
+		this.catLeaders = leaders;
 		let array = [];
 		for(let i=0; i<leaders.length; i++){
 			let index = i;
@@ -196,13 +198,14 @@ const game = {
 		this.leadersImages = array;	
 	},
 	pickImage(){//pick random image and remove it from the leadersImages array
+		console.log(this.leadersImages);
 		if(this.leadersImages.length > 0){
 			let array = [];
 			let index = Math.floor(Math.random() * this.leadersImages.length);
 			array.push(this.leadersImages[index]);
 			this.displayImage = array;
 			currentImage = this.displayImage[0];
-			this.leadersImages.splice(index, 1);	
+			this.leadersImages.splice(index, 1);
 		} else {
 			// return true;
 			alert(`You completed guessing through the top 5 ${category} Leaders of all time. Try another category or try the ${category} category again.`);
@@ -234,12 +237,13 @@ const game = {
 		$('#clue2').css('opacity', 1);
 		$('#clue3').css('opacity', 1);	
 	},
-	setClueOrderedList(leaders){
-		for(let i=0; i<leaders.length; i++){
-			// console.log(leaders[i].image);
-			if(this.displayImage[0] === leaders[i].image){
-			// console.log(i);
-			// console.log(leaders[i].clue1);
+	setClueOrderedList(){
+		console.log(this.catLeaders);
+		for(let i=0; i<this.catLeaders.length; i++){
+			// console.log(this.avgLeaders[i].image);
+			if(this.displayImage[0] === this.catLeaders[i].image){
+			console.log(i);
+			console.log(this.catLeaders[i].clue1);
 			// add an ordered list here...
 			const $ol = $('<ol id="clueList"></ol>');
 			$('.clues').append($ol);
@@ -262,13 +266,22 @@ const game = {
 			}
 		}
 	},
-	pickClue1(){//update pickClue# as appropriate
-		$('#clueList').append(`<li id="clueList1">${this.avgLeaders[avgIndex].clue1}</li>`);
+	pickClue1(){
+		$('#clueList').append(`<li id="clueList1">${this.leadersImages[avgIndex].clue1}</li>`);
 	},
 	pickClue2(){
-		$('#clueList').append(`<li id="clueList2">${this.avgLeaders[avgIndex].clue2}</li>`);
+		$('#clueList').append(`<li id="clueList2">${this.leadersImages[avgIndex].clue2}</li>`);
 	},
 	pickClue3(){
+		$('#clueList').append(`<li id="clueList3">${this.leadersImages[avgIndex].clue3}</li>`);
+	},
+	pickClue1OLD(){//update pickClue# as appropriate
+		$('#clueList').append(`<li id="clueList1">${this.avgLeaders[avgIndex].clue1}</li>`);
+	},
+	pickClue2OLD(){
+		$('#clueList').append(`<li id="clueList2">${this.avgLeaders[avgIndex].clue2}</li>`);
+	},
+	pickClue3OLD(){
 		$('#clueList').append(`<li id="clueList3">${this.avgLeaders[avgIndex].clue3}</li>`);
 	},
 	checkForRightAnswer(){
@@ -324,7 +337,7 @@ $onAVGClick.on('click', () => {
 	game.createImageArray(game.avgLeaders);
 	game.pickImage();
 	game.newCover();
-	game.setClueOrderedList(game.avgLeaders);
+	game.setClueOrderedList();
 });
 
 //move on to the next player
