@@ -267,13 +267,13 @@ const game = {
 		}
 	},
 	pickClue1(){
-		$('#clueList').append(`<li id="clueList1">${this.leadersImages[avgIndex].clue1}</li>`);
+		$('#clueList').append(`<li id="clueList1">${this.catLeaders[avgIndex].clue1}</li>`);
 	},
 	pickClue2(){
-		$('#clueList').append(`<li id="clueList2">${this.leadersImages[avgIndex].clue2}</li>`);
+		$('#clueList').append(`<li id="clueList2">${this.catLeaders[avgIndex].clue2}</li>`);
 	},
 	pickClue3(){
-		$('#clueList').append(`<li id="clueList3">${this.leadersImages[avgIndex].clue3}</li>`);
+		$('#clueList').append(`<li id="clueList3">${this.catLeaders[avgIndex].clue3}</li>`);
 	},
 	pickClue1OLD(){//update pickClue# as appropriate
 		$('#clueList').append(`<li id="clueList1">${this.avgLeaders[avgIndex].clue1}</li>`);
@@ -285,7 +285,7 @@ const game = {
 		$('#clueList').append(`<li id="clueList3">${this.avgLeaders[avgIndex].clue3}</li>`);
 	},
 	checkForRightAnswer(){
-		if(playerName.toUpperCase() === this.avgLeaders[avgIndex].lastName.toUpperCase()){
+		if(playerName.toUpperCase() === this.catLeaders[avgIndex].lastName.toUpperCase()){
 			alert('You are correct');
 			//create lower scoreboard
 			//add Player 1 game yield 1 point
@@ -298,7 +298,7 @@ const game = {
 	addToScoreboard(){
 		const $ol = $('<ol id="plyrListRank"></ol>');
 		$('.scoreboardTop').append($ol);
-		$('#plyrListRank').append(`<li id="player">The player is ${this.avgLeaders[avgIndex].firstName} ${this.avgLeaders[avgIndex].lastName}.  His average is ${this.avgLeaders[avgIndex].avg}.  His rank is ${this.avgLeaders[avgIndex].rank}.</li>`);
+		$('#plyrListRank').append(`<li id="player">The player is ${this.catLeaders[avgIndex].firstName} ${this.catLeaders[avgIndex].lastName}.  His ${category} is ${this.catLeaders[avgIndex].avg}.  His rank is ${this.catLeaders[avgIndex].rank}.</li>`);
 		// when you add HR and RBI categories, make sure you empty the scoreboard
 		
 		// if(avgLeadersImages.length === 0){
@@ -345,9 +345,10 @@ const $next = $('#next');
 $next.on('click', () => {
 	// console.log('button worked');
 	// location.reload();
+	$('#clueList').empty();
 	game.pickImage();
 	game.newCover();
-	game.setClueOrderedList();//add game.avgLeaders here
+	game.setClueOrderedList();
 });
 
 
@@ -390,7 +391,7 @@ $('form').on('submit', (e) => {
     // console.log($('#input-box').val());
     playerName = $('#input-box').val();
     game.checkForRightAnswer();
-	$('#clueList').empty();
+	// $('#clueList').empty();
     game.addToScoreboard();
  	
     event.preventDefault();
