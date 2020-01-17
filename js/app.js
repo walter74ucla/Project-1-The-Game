@@ -132,7 +132,7 @@ const game = {
 			rank: 1,
 			firstName: 'Hank',
 		 	lastName: 'Aaron',
-			rbi: 2297,
+			rbi: '2,297',
 			clue1: 'Last Negro league player on an MLB roster',
 		 	clue2: '21-time All-Star, held HR record for 33 years',
 		 	clue3: 'All-time RBI and TB leader',
@@ -141,7 +141,7 @@ const game = {
 		 	rank: 2,
 		 	firstName: 'Babe',
 		 	lastName: 'Ruth',
-		 	rbi: 2214,
+		 	rbi: '2,214',
 		 	clue1: '7-time World Series champion',
 		 	clue2: '1-time AL batting champ and 1-time AL ERA champion',
 		 	clue3: 'All-time SLG leader',
@@ -150,45 +150,35 @@ const game = {
 		 	rank: 3,
 		 	firstName: 'Alex',
 		 	lastName: 'Rodriguez',
-		 	rbi: 2086,
+		 	rbi: '2,086',
 		 	clue1: '3 AL MVP wins',
 		 	clue2: '14-time All-Star and 10 Silver Slugger awards',
 		 	clue3: '1st pick of 1993 draft',
 		 	image: "https://i.imgur.com/2QKuiaX.jpg"
 		 }, {
-		 	rank: '4t',
+		 	rank: 'tie-4',
 		 	firstName: 'Cap',
 		 	lastName: 'Anson',
-		 	rbi: 2075,
+		 	rbi: '2,075',
 		 	clue1: 'played for 27 seasons',
 		 	clue2: 'possibly the first player with 3,000 hits',
 		 	clue3: '4-time batting champion',
 		 	image: "https://i.imgur.com/SqOe12M.jpg"
 		 }, {
-		 	rank: '4t',
+		 	rank: 'tie-4',
 		 	firstName: 'Albert',
 		 	lastName: 'Pujols',
-		 	hr: 2075,
+		 	rbi: '2,075',
 		 	clue1: '13th round pick in 1999',
 		 	clue2: '3-time MVP and 6-time Silver Slugger',
 		 	clue3: 'Career GDP leader',
 		 	image: "https://i.imgur.com/aFWqYhf.jpg"
 		 }
 	],
-	avgLeadersImages: [],//this holds a random array of AVG leaders images
-	displayImage: [], //this is the picture under the cover
 	leadersImages: [], //this holds a random array of leaders images
-	createALIArray(){//create an array of images from the starting point data
-		let array = [];
-		for(let i=0; i<this.avgLeaders.length; i++){
-			let index = i;
-			
-			array.push(this.avgLeaders[index].image);
-		}
-		this.avgLeadersImages = array;
-	},
+	displayImage: [], //this is the picture under the cover
 	createImageArray(leaders){//create an array of images from the game object
-		console.log(leaders);
+		// console.log(leaders);
 		this.catLeaders = leaders;
 		let array = [];
 		for(let i=0; i<leaders.length; i++){
@@ -199,7 +189,7 @@ const game = {
 		this.leadersImages = array;	
 	},
 	pickImage(){//pick random image and remove it from the leadersImages array
-		console.log(this.leadersImages);
+		// console.log(this.leadersImages);
 		if(this.leadersImages.length > 0){
 			let array = [];
 			let index = Math.floor(Math.random() * this.leadersImages.length);
@@ -209,24 +199,9 @@ const game = {
 			this.leadersImages.splice(index, 1);
 		} else {
 			// return true;
-			alert(`You completed guessing through the top 5 ${category} Leaders of all time. Try another category or try the ${category} category again.`);
-			location.reload();
-		}
-			$('.insideImage').css('background', `url(${currentImage}) no-repeat center`);
-			$('.insideImage').css('background-size', 'cover');
-			// $('#gameImage').attr('src',game.displayImage);		
-	},
-	pickImageOLD(){//pick random image and remove it from the images array
-		if(this.avgLeadersImages.length > 0){
-			let array = [];
-			let index = Math.floor(Math.random() * this.avgLeadersImages.length);
-			array.push(this.avgLeadersImages[index]);
-			this.displayImage = array;
-			currentImage = this.displayImage[0];
-			this.avgLeadersImages.splice(index, 1);	
-		} else {
-			// return true;
-			alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');
+			alert(`You completed guessing through the top 5 
+				${category} Leaders of all time. Try another 
+				category or try the ${category} category again.`);
 			location.reload();
 		}
 			$('.insideImage').css('background', `url(${currentImage}) no-repeat center`);
@@ -239,30 +214,16 @@ const game = {
 		$('#clue3').css('opacity', 1);	
 	},
 	setClueOrderedList(){
-		console.log(this.catLeaders);
+		// console.log(this.catLeaders);
 		for(let i=0; i<this.catLeaders.length; i++){
-			// console.log(this.avgLeaders[i].image);
+			// console.log(this.catLeaders[i].image);
 			if(this.displayImage[0] === this.catLeaders[i].image){
-			console.log(i);
-			console.log(this.catLeaders[i].clue1);
+			// console.log(i);
+			// console.log(this.catLeaders[i].clue1);
 			// add an ordered list here...
 			const $ol = $('<ol id="clueList"></ol>');
 			$('.clues').append($ol);
 			catIndex = i;
-			break;
-			}
-		}
-	},
-	setClueOrderedListOLD(){
-		for(let i=0; i<this.avgLeaders.length; i++){
-			// console.log(this.avgLeaders[i].image);
-			if(this.displayImage[0] === this.avgLeaders[i].image){
-			// console.log(i);
-			// console.log(this.avgLeaders[i].clue1);
-			// add an ordered list here...
-			const $ol = $('<ol id="clueList"></ol>');
-			$('.clues').append($ol);
-			avgIndex = i;
 			break;
 			}
 		}
@@ -276,22 +237,21 @@ const game = {
 	pickClue3(){
 		$('#clueList').append(`<li id="clueList3">${this.catLeaders[catIndex].clue3}</li>`);
 	},
-	pickClue1OLD(){//update pickClue# as appropriate
-		$('#clueList').append(`<li id="clueList1">${this.avgLeaders[avgIndex].clue1}</li>`);
-	},
-	pickClue2OLD(){
-		$('#clueList').append(`<li id="clueList2">${this.avgLeaders[avgIndex].clue2}</li>`);
-	},
-	pickClue3OLD(){
-		$('#clueList').append(`<li id="clueList3">${this.avgLeaders[avgIndex].clue3}</li>`);
-	},
 	checkForRightAnswer(){
 		if(playerName.toUpperCase() === this.catLeaders[catIndex].lastName.toUpperCase()){
 			alert('You are correct');
+			//reveal the entire picture and only show the clues that were clicked
+			removeClue1();
+			removeClue2();
+			removeClue3();
 			//create lower scoreboard
 			//add Player 1 game yield 1 point
 		} else {
 			alert('Incorrect');
+			//reveal the entire picture and only show the clues that were clicked
+			removeClue1();
+			removeClue2();
+			removeClue3();
 			//create lower scoreboard
 			//add Player 1 game yield 0 points
 		}
@@ -340,7 +300,8 @@ const game = {
 const $onAVGClick = $('#avg');
 $onAVGClick.on('click', () => {
 	// console.log('button worked');
-	// imageArray = this.avgLeaders;
+	$('#hr').prop('disabled', true)
+	$('#rbi').prop('disabled', true)
 	category = 'AVG';
 	game.createImageArray(game.avgLeaders);
 	game.pickImage();
@@ -351,7 +312,8 @@ $onAVGClick.on('click', () => {
 const $onHRClick = $('#hr');
 $onHRClick.on('click', () => {
 	// console.log('button worked');
-	// imageArray = this.avgLeaders;
+	$('#avg').prop('disabled', true)
+	$('#rbi').prop('disabled', true)
 	category = 'HR';
 	game.createImageArray(game.hrLeaders);
 	game.pickImage();
@@ -362,7 +324,8 @@ $onHRClick.on('click', () => {
 const $onRBIClick = $('#rbi');
 $onRBIClick.on('click', () => {
 	// console.log('button worked');
-	// imageArray = this.avgLeaders;
+	$('#avg').prop('disabled', true)
+	$('#hr').prop('disabled', true)
 	category = 'RBI';
 	game.createImageArray(game.rbiLeaders);
 	game.pickImage();
@@ -375,14 +338,12 @@ const $next = $('#next');
 $next.on('click', () => {
 	// console.log('button worked');
 	// location.reload();
+	$('#disable-submit').prop('disabled', false)
 	$('#clueList').empty();
 	game.pickImage();
 	game.newCover();
 	game.setClueOrderedList();
 });
-
-
-
 
 
 const removeClue1 = () => {
@@ -419,6 +380,7 @@ $clue3.on('click', () => {
 $('form').on('submit', (e) => {
     // console.log('clicked');  
     // console.log($('#input-box').val());
+    $('#disable-submit').prop('disabled', true)
     playerName = $('#input-box').val();
     game.checkForRightAnswer();
 	// $('#clueList').empty();
