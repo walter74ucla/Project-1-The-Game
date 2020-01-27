@@ -1,0 +1,23 @@
+{
+  "name": "project-1-the-game",
+  "version": "1.0.0",
+  "description": "Triple Crown Trivia",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walter74ucla/Project-1-The-Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walter74ucla/Project-1-The-Game/issues"
+  },
+  "homepage": "https://github.com/walter74ucla/Project-1-The-Game#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
