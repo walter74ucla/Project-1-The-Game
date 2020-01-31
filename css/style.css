@@ -88,7 +88,7 @@ h1 {
 	"clue1 clue2 clue3";
 	grid-template-columns: 1fr 1fr 1fr; /*or use %vh, view height*/ 
 	grid-template-rows: 1fr;
-	height: 40vh;
+	height: 65vh;
 	width: 100%;
 	/*border: 2px solid black;*/
 	background: url('https://i.imgur.com/rYM2n7D.jpg') no-repeat center fixed;

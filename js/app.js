@@ -206,7 +206,7 @@ const game = {
 		}
 			$('.insideImage').css('background', `url(${currentImage}) no-repeat center`);
 			$('.insideImage').css('background-size', 'cover');
-			// $('#gameImage').attr('src',game.displayImage);		
+			
 	},
 	newCover(){
 		$('#clue1').css('opacity', 1);
@@ -245,16 +245,12 @@ const game = {
 			removeClue1();
 			removeClue2();
 			removeClue3();
-			//create lower scoreboard
-			//add Player 1 game yield 1 point
 		} else {
 			alert('Incorrect');
 			//reveal the entire picture and only show the clues that were clicked
 			removeClue1();
 			removeClue2();
 			removeClue3();
-			//create lower scoreboard
-			//add Player 1 game yield 0 points
 		}
 	},
 	addToScoreboard(){
@@ -269,15 +265,6 @@ const game = {
 		$('.scoreboardTop').append($ol);
 		$('#plyrListRank').append(`<li id="player">The player is ${this.catLeaders[catIndex].firstName} ${this.catLeaders[catIndex].lastName}.  His ${category} is ${value}.  His rank is ${this.catLeaders[catIndex].rank}.</li>`);
 		// when you add HR and RBI categories, make sure you empty the scoreboard
-		
-		// if(avgLeadersImages.length === 0){
-		// 	alert('You completed guessing through the top 5 MLB AVG Leaders of all time. Try another category or try the AVG category again.');			
-		// } else {
-			
-		// 	enterCount++;
-		// }
-		
-		
 	},
 	addToStats(){
 		let guessPercentage = correctCount / attemptCount;
@@ -295,10 +282,6 @@ const game = {
 		$('#next').prop('disabled', true);
 		$('#disable-submit').prop('disabled', true);
 	}
-	// ,
-	// calcGuessPercentage(){
-	// 	let guessPercentage = correctCount / attemptCount;
-	// }
 }
 	
 
@@ -307,17 +290,6 @@ game.launch();
 // game.createALIArray();
 // game.pickImage();
 // game.pickClue();
-
-
-
-// const $onAVGClick = $('#avg');
-// $onAVGClick.on('click', () => {
-// 	// console.log('button worked');
-// 	game.createALIArray();
-// 	game.pickImage();
-// 	game.newCover();
-// 	game.setClueOrderedList();
-// });
 
 const $onAVGClick = $('#avg');
 $onAVGClick.on('click', () => {
