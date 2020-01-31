@@ -22,7 +22,7 @@ body {
 
 .start {
 	grid-area: tct;
-	border: 2px solid purple;
+	/*border: 2px solid purple;*/
 	text-align: center;
 	background: url("https://i.imgur.com/a9mf1mk.jpg") no-repeat center fixed;
   	background-size: cover;
@@ -36,7 +36,7 @@ h1 {
 
 .title {
 	grid-area: header;
-	border: 2px solid orange;
+	/*border: 2px solid orange;*/
 	/*display: flex;*/
 	text-align: center;
 	/*background: url(https://i.imgur.com/FrAZF9v.jpg) no-repeat center fixed;
@@ -55,7 +55,7 @@ h1 {
 	grid-area: clues;
 	opacity: .7;
 	background: white;
-	border: 2px solid black;
+	/*border: 2px solid black;*/
 	/*grid-column: 1;
 	grid-row: 3/5;*/
 	color: #BB0021;
@@ -69,7 +69,7 @@ h1 {
 
 .images {
 	grid-area: image;
-	border: 2px solid green;
+	/*border: 2px solid green;*/
 	
 	/*height: 500px;*/
 	/*display: grid;*/
@@ -90,37 +90,10 @@ h1 {
 	grid-template-rows: 1fr;
 	height: 40vh;
 	width: 100%;
-	border: 2px solid black;
+	/*border: 2px solid black;*/
 	background: url('https://i.imgur.com/rYM2n7D.jpg') no-repeat center fixed;
 	background-size: cover;
 }
-/*.playerImage {
-	z-index: 1;
-}*/
-/*.cover {
-	border: 2px solid blue;
-	grid-column: 2;
-	grid-row: 3;
-	z-index: 1; /*this gives the z-axis, 0 is way back, 1 is way front*/
-	/*background: blue;
-	display: grid;
-}
-
-.coverParts {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);*/
-	/*grid-auto-rows: 70px;
-	grid-gap: 1em;
-
-}*/
-
-/*.coverParts > div {
-	border: 1px solid black;
-	font-weight: bold;
-	text-align: center;
-
-
-}*/
 
 #clue1 {
 	background: #051E41;
@@ -163,7 +136,7 @@ h1 {
 
 .scoreboardTop {
 	grid-area: scoreboard;
-	border: 2px solid blue;
+	/*border: 2px solid blue;*/
 	opacity: .7;
 	background: white;
 	color: #051E41;
@@ -177,21 +150,23 @@ h1 {
 
 .stats {
 	grid-area: stats;
-	border: 2px solid gold;
-	opacity: .7;
-	background: white;
-	color: #051E41;/*update this*/
+	border: 2px solid black;
+	opacity: 1;
+	background: gold;
+	color: black;
 	font-weight: bold;
 	font-size: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	background: url("https://i.imgur.com/a9mf1mk.jpg") no-repeat center fixed;
+  	background-size: cover;
 }
 
 .lastName {
 	grid-area: lastName;
-	border: 2px solid red;
+	/*border: 2px solid red;*/
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;
@@ -202,10 +177,10 @@ h1 {
   	background-size: cover;
 }
 
-#gameImage {
+/*#gameImage {
 	margin: auto;
 	border: 2px solid pink;
-}
+}*/
 
 /*4:28 mark in this youtube video*/
 /*https://youtu.be/g0Aq2kP5-CY*/

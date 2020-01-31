@@ -282,9 +282,9 @@ const game = {
 	addToStats(){
 		let guessPercentage = correctCount / attemptCount;
 		let num = guessPercentage.toFixed(3);
-		$('.stats').css({"background-color": "grey", "opacity": "1"});
-		$('#participantStats').text(`You are ${correctCount} for ${attemptCount}, ${num}`)
-		.css({"font-size": "20px", "color": "black"});
+		// $('.stats').css({"background-color": "grey", "opacity": "1"});
+		$('#participantStats').text(`You are ${correctCount} for ${attemptCount}, ${num}`);
+		// .css({"font-size": "20px", "color": "black"});
 	},
 	// addToStats(){//This way made the screen extend beyond 1 page
 	// 	const $ul = $('<ul id="participantStats"></ul>');
