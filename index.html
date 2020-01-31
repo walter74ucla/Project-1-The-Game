@@ -11,7 +11,7 @@
 	 <!-- sets up grid container -->
 		<header class="start">
 			<button id="next">New Player</button>
-			<p>Start by clicking on one of the categories above. Guess which All-Time Top 5 MLB player is behind the curtain.  Click on a clue to reveal a hint.  Enter your guess at the bottom to see if you are right. Click this button to guess the next player.     
+			<p>Start by clicking on one of the categories above. Guess which All-Time Top 5 MLB player is behind the curtain.  Click on a clue to reveal a hint.  Enter your guess at the bottom to see if you are right. Click this button to guess the next player.  *Stats through the 2019 season*   
 			</p>
 		</header>
 
@@ -24,7 +24,7 @@
 		
 
 		<div class="clues">
-			<h2>Clues</h2>
+			<h2 id="jewel">Clues</h2>
 		</div>
 
 		<div class="images">
@@ -44,12 +44,12 @@
 		</div>
 
 		<div class="stats">
-			<h2>Stats</h2>
+			<h2 id="participantStats">Stats</h2>
 		</div>
 
 		<div class="lastName">
 			<form>
-				<label for="name">Enter Last Name:</label>
+				<label for="name">Enter Player's Last Name:</label>
 	    		<input type="text" id="input-box">
 				<button type="submit" id="disable-submit">Submit</button>
 			</form>

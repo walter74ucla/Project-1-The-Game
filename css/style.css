@@ -12,7 +12,7 @@ body {
 	"clues image scoreboard"
 	"lastName lastName stats";
 	grid-template-columns: 1fr 1fr 1fr; /*or use %vh, view height*/ 
-	grid-template-rows: 15vh 10vh 65vh 10vh;
+	grid-template-rows: 15vh 10vh 65vh 10vh;/*auto auto auto auto*/
 	height: 100vh;/*makes it take the whole screen height*/ 
 	/*grid-column-gap: 1em;
 	grid-row-gap: 1em;*/
@@ -26,7 +26,7 @@ body {
 	text-align: center;
 	background: url("https://i.imgur.com/a9mf1mk.jpg") no-repeat center fixed;
   	background-size: cover;
-  	font-size: 16px;
+  	font-size: 14px;
   	font-weight: bold;
 }
 
@@ -53,7 +53,7 @@ h1 {
 
 .clues {
 	grid-area: clues;
-	opacity: .5;
+	opacity: .7;
 	background: white;
 	border: 2px solid black;
 	/*grid-column: 1;
@@ -88,7 +88,7 @@ h1 {
 	"clue1 clue2 clue3";
 	grid-template-columns: 1fr 1fr 1fr; /*or use %vh, view height*/ 
 	grid-template-rows: 1fr;
-	height: 50vh;
+	height: 40vh;
 	width: 100%;
 	border: 2px solid black;
 	background: url('https://i.imgur.com/rYM2n7D.jpg') no-repeat center fixed;
@@ -164,7 +164,7 @@ h1 {
 .scoreboardTop {
 	grid-area: scoreboard;
 	border: 2px solid blue;
-	opacity: .5;
+	opacity: .7;
 	background: white;
 	color: #051E41;
 	font-weight: bold;
@@ -177,16 +177,27 @@ h1 {
 
 .stats {
 	grid-area: stats;
-	/*border: 2px solid gold;*/
-	background: grey;
-	text-align: center;
-	
-
+	border: 2px solid gold;
+	opacity: .7;
+	background: white;
+	color: #051E41;/*update this*/
+	font-weight: bold;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .lastName {
 	grid-area: lastName;
 	border: 2px solid red;
+	font-size: 20px;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	background: url("https://i.imgur.com/a9mf1mk.jpg") no-repeat center fixed;
   	background-size: cover;
 }

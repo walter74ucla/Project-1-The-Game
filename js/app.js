@@ -17,12 +17,12 @@
 //create a blank array within the game object to populate with images
 // this will give me access to the temporary arrays
 
-let showImageClickCount = 0;
+// let showImageClickCount = 0;//used for testing
 let catIndex = 0;// this will help me locate stuff in the catLeaders array
-let playerName = 0;
-let enterCount =1;
-let correctPoint = 1;// you get 1 point for a correct answer
-let incorrectPoint = 0;// you get 0 points for an incorrect answer
+let playerName = '';
+let correctCount = 0;
+let attemptCount = 0;
+let guessPercentage = 0;
 
 let catLeaders = [];
 let category = null;
@@ -240,6 +240,7 @@ const game = {
 	checkForRightAnswer(){
 		if(playerName.toUpperCase() === this.catLeaders[catIndex].lastName.toUpperCase()){
 			alert('You are correct');
+			correctCount++;
 			//reveal the entire picture and only show the clues that were clicked
 			removeClue1();
 			removeClue2();
@@ -277,10 +278,31 @@ const game = {
 		// }
 		
 		
+	},
+	addToStats(){
+		let guessPercentage = correctCount / attemptCount;
+		let num = guessPercentage.toFixed(3);
+		$('.stats').css({"background-color": "grey", "opacity": "1"});
+		$('#participantStats').text(`You are ${correctCount} for ${attemptCount}, ${num}`)
+		.css({"font-size": "20px", "color": "black"});
+	},
+	// addToStats(){//This way made the screen extend beyond 1 page
+	// 	const $ul = $('<ul id="participantStats"></ul>');
+	// 	$('.stats').append($ul);
+	// 	$('#participantStats').append(`<li id="participant">You are ${correctCount} for ${attemptCount}.</li>`);
+	// },
+	launch(){
+		$('#next').prop('disabled', true);
+		$('#disable-submit').prop('disabled', true);
 	}
+	// ,
+	// calcGuessPercentage(){
+	// 	let guessPercentage = correctCount / attemptCount;
+	// }
 }
 	
-	
+
+game.launch();	
 
 // game.createALIArray();
 // game.pickImage();
@@ -300,8 +322,11 @@ const game = {
 const $onAVGClick = $('#avg');
 $onAVGClick.on('click', () => {
 	// console.log('button worked');
+	$('#jewel').text('AVG Clues');
+	$('#avg').prop('disabled', true);
 	$('#hr').prop('disabled', true)
 	$('#rbi').prop('disabled', true)
+	$('#disable-submit').prop('disabled', false);
 	category = 'AVG';
 	game.createImageArray(game.avgLeaders);
 	game.pickImage();
@@ -312,8 +337,11 @@ $onAVGClick.on('click', () => {
 const $onHRClick = $('#hr');
 $onHRClick.on('click', () => {
 	// console.log('button worked');
-	$('#avg').prop('disabled', true)
-	$('#rbi').prop('disabled', true)
+	$('#jewel').text('HR Clues');
+	$('#hr').prop('disabled', true);
+	$('#avg').prop('disabled', true);
+	$('#rbi').prop('disabled', true);
+	$('#disable-submit').prop('disabled', false);
 	category = 'HR';
 	game.createImageArray(game.hrLeaders);
 	game.pickImage();
@@ -324,8 +352,11 @@ $onHRClick.on('click', () => {
 const $onRBIClick = $('#rbi');
 $onRBIClick.on('click', () => {
 	// console.log('button worked');
-	$('#avg').prop('disabled', true)
-	$('#hr').prop('disabled', true)
+	$('#jewel').text('RBI Clues');
+	$('#rbi').prop('disabled', true);
+	$('#avg').prop('disabled', true);
+	$('#hr').prop('disabled', true);
+	$('#disable-submit').prop('disabled', false);
 	category = 'RBI';
 	game.createImageArray(game.rbiLeaders);
 	game.pickImage();
@@ -338,7 +369,8 @@ const $next = $('#next');
 $next.on('click', () => {
 	// console.log('button worked');
 	// location.reload();
-	$('#disable-submit').prop('disabled', false)
+	$('#next').prop('disabled', true);
+	$('#disable-submit').prop('disabled', false);
 	$('#clueList').empty();
 	game.pickImage();
 	game.newCover();
@@ -382,10 +414,13 @@ $('form').on('submit', (e) => {
     // console.log($('#input-box').val());
     $('#disable-submit').prop('disabled', true)
     playerName = $('#input-box').val();
+    $('#next').prop('disabled', false);
+    attemptCount++;
     game.checkForRightAnswer();
 	// $('#clueList').empty();
     game.addToScoreboard();
- 	
+ 	game.addToStats();
+
     event.preventDefault();
     $('#input-box').val('');   
   });
