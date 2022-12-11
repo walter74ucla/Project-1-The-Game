@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/walter74ucla/Project-1-The-Game#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
